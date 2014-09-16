@@ -10,20 +10,25 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	int x;
 	int total = 0;
-	for (int L=0; L<5; L++){
-		
+	int students;
+	cout<<"Enter the number of students.\n";
+	cin>>students;
+	for (int L=0; L<students; L++){								//Loop based on number of students
+															//Input Student Name + Grade
 			string name;
 			cout<<"Enter the Student's First Name.\n";
 			cin>>name;
 			string name2;
 			cout<<"Enter the Student's Last Name.\n";
 			cin >> name2;
+
+		do {											//Do while loop prevents grade input from being out of parameters
 			cout << "Enter "<< name<< " " <<name2 <<"'s Grade 0 - 100\n";
 			cin>> x;
 			string z;
 			int grade=x;
 
-		do {
+		
 
 			if(x>=0 && x<60) {
 				z = "F";
@@ -52,16 +57,16 @@ int _tmain(int argc, _TCHAR* argv[])
 				cout << name<< " "  << name2  << " will receive an " << z << " for the course.\n\n";
 			}
 			if(x<0) {
-				cout<< grade << name2 <<" is not within the bounds specified.\n\n";
+				cout<< grade<<" is not within the bounds specified.\n\n";
 			}
 			if(x>101) {
-				cout<< grade << name2 <<" is not within the bounds specified.\n\n";
+				cout<< grade<<" is not within the bounds specified.\n\n";
 			}
-
-			total = total + grade;
-		
+			if (x>=0 && x<=100) {
+				total = total + grade;    //This line will add up all the grades to be used for the average
+			}
 		}while(x<=-1 || x>101);	
 	}
-	int avg = total/5;
+	int avg = total/students;                //Total divided by the number of students
 	cout << "Average class grade = " << avg << "\n";
 }
